@@ -1,56 +1,51 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
 
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
+  /*
+  * Copyright (c) 2020 The ZMK Contributors
+  *
+  * SPDX-License-Identifier: MIT
+  */
 
-/ {
-        keymap {
-                compatible = "zmk,keymap";
+  #include <behaviors.dtsi>
+  #include <dt-bindings/zmk/keys.h>
+  #include <dt-bindings/zmk/bt.h>
+  #include <dt-bindings/zmk/ext_power.h>
 
-                default_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
-                        >;
-                };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                          	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
-                        >;
-                };
-
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                    	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
-                        >;
-                };
+  / {
+    keymap {
+      compatible = "zmk,keymap";
+  layer0 {
+          bindings = <
+          &kp TAB &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp BACKSPACE &mt LEFT_CONTROL ESCAPE &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SEMICOLON &kp SINGLE_QUOTE &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &trans &kp M &kp COMMA &kp DOT &kp SLASH &kp LC(B) &kp LEFT_GUI &mo 1 &kp SPACE &kp ENTER &mo 2 &kp LEFT_ALT
+          >;
+        };layer1 {
+          bindings = <
+          &trans &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 RALT(KC_W) &trans &kp PRINTSCREEN &kp F20 LSFT(KC_BTN3) &kp LC(KC_BTN3) &kp F20 &kp LEFT &kp DOWN &kp UP &kp RIGHT RALT(KC_P) RALT(KC_Q) &trans &kp F20 &kp F20 &kp F20 &kp LC(Z) &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp LEFT_GUI &trans &kp SPACE &kp ENTER &mo 3 &kp RIGHT_ALT
+          >;
+        };layer2 {
+          bindings = <
+          &trans KC_EXLM KC_AT KC_HASH KC_DLR KC_PERC KC_CIRC KC_AMPR KC_ASTR KC_LPRN KC_RPRN &kp DELETE &trans &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp MINUS &kp EQUAL &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp BACKSLASH &kp GRAVE &trans &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 KC_UNDS KC_PLUS KC_LCBR KC_RCBR KC_PIPE KC_TILD &kp LEFT_GUI &mo 3 &kp SPACE &kp ENTER &trans &kp RIGHT_ALT
+          >;
+        };layer3 {
+          bindings = <
+          &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 RGB_TOG RGB_HUI RGB_SAI RGB_VAI &kp F20 &kp F20 KC_MS_L KC_MS_D KC_MS_U KC_MS_R KC_BTN1 KC_BTN2 RGB_MOD RGB_HUD RGB_SAD RGB_VAD &kp F20 &kp F20 DF(4) &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp LEFT_GUI &trans &kp SPACE &kp ENTER &trans &kp RIGHT_ALT
+          >;
+        };layer4 {
+          bindings = <
+          &kp TAB &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp BACKSPACE &mt LEFT_CONTROL ESCAPE &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp SEMICOLON &kp SINGLE_QUOTE &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp SLASH &kp LC(B) &kp LEFT_GUI &mo 6 &kp SPACE &kp ENTER &mo 5 &kp LEFT_ALT
+          >;
+        };layer5 {
+          bindings = <
+          &trans &kp F20 &kp N7 &kp N8 &kp N9 &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 RALT(KC_W) &trans &kp F20 &kp N4 &kp N5 &kp N6 &kp F20 &kp LEFT &kp DOWN &kp UP &kp RIGHT RALT(KC_P) RALT(KC_Q) &trans &kp F20 &kp N1 &kp N2 &kp N3 &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp LEFT_GUI &mo 7 &kp SPACE &kp ENTER &trans &kp RIGHT_ALT
+          >;
+        };layer6 {
+          bindings = <
+          &trans KC_EXLM KC_AT KC_HASH KC_DLR KC_PERC KC_CIRC KC_AMPR KC_ASTR KC_LPRN KC_RPRN &kp DELETE &trans &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp MINUS &kp EQUAL &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp BACKSLASH &kp GRAVE &trans &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 KC_UNDS KC_PLUS KC_LCBR KC_RCBR KC_PIPE KC_TILD &kp LEFT_GUI &trans &kp SPACE &kp ENTER &mo 7 &kp RIGHT_ALT
+          >;
+        };layer7 {
+          bindings = <
+          &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp F20 RGB_HUI RGB_SAI RGB_VAI &kp F20 &kp F20 KC_MS_L KC_MS_D KC_MS_U KC_MS_R KC_BTN1 KC_BTN2 &kp F20 RGB_HUD RGB_SAD RGB_VAD &kp F20 &kp F20 DF(0) &kp F20 &kp F20 &kp F20 &kp F20 &kp F20 &kp LEFT_GUI &trans &kp SPACE &kp ENTER &trans &kp RIGHT_ALT
+          >;
         };
-};
+    };
+  };
+  
